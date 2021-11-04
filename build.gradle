@@ -1,0 +1,78 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+buildscript {
+    ext {
+        kotlin_version = '1.5.0'
+    }
+
+    ext.versions = [
+            'sourceCompat'      : JavaVersion.VERSION_11,
+            'targetCompat'      : JavaVersion.VERSION_11,
+            'kotlin'            : '1.5.0',
+            'minSdk'            : 21,
+            'compileSdk'        : 30,
+            'targetSdk'         : 30,
+
+            // hilt
+            'hilt'              : '2.38.1',
+            'lifecycleExtension': '2.0.0',
+
+            //rx
+            'rxJava'            : '2.2.8',
+            'rxAndroid'         : '2.1.1',
+            'retrofitRxAdapter' : '1.0.0',
+            'rxBinding'         : '3.0.0-alpha2',
+            'rxKotlin'          : '2.3.0',
+            'rxRelay'           : '2.1.0',
+
+            //dagger
+            'dagger'                    : '2.40',
+            'daggerSupport'             : '2.40',
+            'daggerProcessor'           : '2.40',
+            'daggerAndroidProcessor'    : '2.40',
+
+            'androidState'              : '1.4.1'
+    ]
+
+    ext.deps = [
+            hilt                : [
+                    'hilt'                  : "com.google.dagger:hilt-android:${versions.hilt}",
+                    'hiltCompiler'          : "com.google.dagger:hilt-android-compiler:${versions.hilt}",
+                    'lifecycleExtension'    : "androidx.lifecycle:lifecycle-extensions:${versions.lifecycleExtension}"
+            ],
+            reactivex           : [
+                    'rxJava'                : "io.reactivex.rxjava2:rxjava:${versions.rxJava}",
+                    'rxAndroid'             : "io.reactivex.rxjava2:rxandroid:${versions.rxAndroid}",
+                    'rxRelay'               : "com.jakewharton.rxrelay2:rxrelay:${versions.rxRelay}",
+                    'rxKotlin'              : "io.reactivex.rxjava2:rxkotlin:${versions.rxKotlin}",
+                    'rxBinding'             : "com.jakewharton.rxbinding3:rxbinding:${versions.rxBinding}"
+            ],
+            dagger              : [
+                    'dagger'                : "com.google.dagger:dagger:${versions.dagger}",
+                    'daggerSupport'         : "com.google.dagger:dagger-android-support:${versions.daggerSupport}",
+                    'daggerProcessor'       : "com.google.dagger:dagger-compiler:${versions.daggerProcessor}",
+                    'daggerAndroidProcessor': "com.google.dagger:dagger-android-processor:${versions.daggerAndroidProcessor}",
+            ],
+            state              : [
+                    core     : "com.evernote:android-state:${versions.androidState}",
+                    processor: "com.evernote:android-state-processor:${versions.androidState}",
+            ],
+    ]
+
+    repositories {
+        google()
+        mavenCentral()
+        maven { url 'https://jitpack.io' }
+        maven { url 'https://maven.google.com' }
+    }
+    dependencies {
+        classpath "com.android.tools.build:gradle:7.0.0"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.5.31"
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
