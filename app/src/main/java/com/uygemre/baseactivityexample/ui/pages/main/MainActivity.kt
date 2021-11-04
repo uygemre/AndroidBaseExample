@@ -34,7 +34,6 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainActivityViewModel>() 
                         fragment = SearchFragment()
                     }
                 }
-
                 return loadFragment(fragment)
             }
         })
