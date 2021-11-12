@@ -6,6 +6,6 @@ dependencyResolutionManagement {
         jcenter() // Warning: this repository is going to shut down soon
     }
 }
-rootProject.name = "BaseActivityExample"
+rootProject.name = "AndroidBase"
 include ':app'
 include ':core'

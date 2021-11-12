@@ -20,7 +20,6 @@ buildscript {
             // rx
             'rxJava'                        : '2.2.8',
             'rxAndroid'                     : '2.1.1',
-            'retrofitRxAdapter'             : '1.0.0',
             'rxBinding'                     : '3.0.0-alpha2',
             'rxKotlin'                      : '2.3.0',
             'rxRelay'                       : '2.1.0',
@@ -46,7 +45,19 @@ buildscript {
             // test
             'junit'                         : '4.13.2',
             'extJunit'                      : '1.1.3',
-            'espressoCore'                  : '3.4.0'
+            'espressoCore'                  : '3.4.0',
+
+            // square
+            'retrofit'                      : '2.9.0',
+            'okhttp'                        : '4.9.0',
+            'okhttpDownloader'              : '1.1.0',
+            'picasso'                       : '2.71828',
+            'retrofitRxAdapter'             : '2.9.0',
+            'timber'                        : '5.0.1',
+            'gson'                          : '2.8.9',
+
+            // viewBinding
+            'viewBinding'                   : '1.5.0-beta01'
     ]
 
     ext.deps = [
@@ -83,13 +94,26 @@ buildscript {
 
             ],
             google                  : [
-                    material                : "com.google.android.material:material:${versions.material}"
+                    material                : "com.google.android.material:material:${versions.material}",
+                    'gson'                  : "com.google.code.gson:gson:${versions.gson}",
+            ],
+            square             : [
+                    'retrofit'              : "com.squareup.retrofit2:retrofit:${versions.retrofit}",
+                    'gsonConverter'         : "com.squareup.retrofit2:converter-gson:${versions.retrofit}",
+                    'okhttp'                : "com.squareup.okhttp3:okhttp:${versions.okhttp}",
+                    'picasso'               : "com.squareup.picasso:picasso:${versions.picasso}",
+                    'okhttpDownloader'      : "com.jakewharton.picasso:picasso2-okhttp3-downloader:${versions.okhttpDownloader}",
+                    'retrofitRxAdapter'     : "com.squareup.retrofit2:adapter-rxjava2:${versions.retrofitRxAdapter}",
+                    'retrofitIntecepter'    : "com.squareup.okhttp3:logging-interceptor:${versions.okhttp}",
+                    'urlconnection'         : "com.squareup.okhttp3:okhttp-urlconnection:${versions.okhttp}",
+                    'timber'                : "com.jakewharton.timber:timber:${versions.timber}",
             ],
             test                    : [
                     junit                   : "junit:junit:${versions.junit}",
                     extJunit                : "androidx.test.ext:junit:${versions.extJunit}",
                     espressoCore            : "androidx.test.espresso:espresso-core:${versions.espressoCore}"
-            ]
+            ],
+            viewBinding                     : "com.github.kirich1409:viewbindingpropertydelegate:${versions.viewBinding}"
     ]
 
     repositories {

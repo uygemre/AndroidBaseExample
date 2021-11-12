@@ -23,9 +23,18 @@ android {
     }
 
     buildTypes {
-        release {
+        getByName("release") {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+
+            buildConfigField 'String', 'BASE_URL', '"https://api.spacexdata.com/v3"'
+        }
+
+        getByName("debug") {
+            minifyEnabled false
+            debuggable true
+
+            buildConfigField 'String', 'BASE_URL', '"https://api.spacexdata.com/v3"'
         }
     }
     compileOptions {
@@ -60,6 +69,19 @@ dependencies {
     api deps.androidx.fragment
 
     api deps.google.material
+    api deps.google.gson
+
+    api deps.square.retrofit
+    api deps.square.gsonConverter
+    api deps.square.okhttp
+    api deps.square.picasso
+    api deps.square.okhttpDownloader
+    api deps.square.retrofitRxAdapter
+    api deps.square.retrofitIntecepter
+    api deps.square.urlconnection
+    api deps.square.timber
+
+    api deps.viewBinding
 
     kapt deps.dagger.daggerProcessor
     kapt deps.dagger.daggerAndroidProcessor

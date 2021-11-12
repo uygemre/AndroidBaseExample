@@ -9,7 +9,7 @@ android {
     compileSdk 31
 
     defaultConfig {
-        applicationId "com.uygemre.baseactivityexample"
+        applicationId "com.uygemre.androidbase"
         minSdk 21
         targetSdk 31
         versionCode 1
@@ -23,10 +23,31 @@ android {
         dataBinding true
     }
 
+    signingConfigs {
+        debug {
+            storeFile file("./doc/android_base.keystore")
+            storePassword "androidbase"
+            keyAlias "android_base"
+            keyPassword "androidbase"
+        }
+        release {
+            storeFile file("./doc/android_base.keystore")
+            storePassword "androidbase"
+            keyAlias "android_base"
+            keyPassword "androidbase"
+        }
+    }
+
     buildTypes {
         release {
             minifyEnabled false
+            signingConfig signingConfigs.release
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            minifyEnabled false
+            debuggable true
+            signingConfig signingConfigs.debug
         }
     }
     compileOptions {
@@ -40,6 +61,8 @@ android {
 
 dependencies {
     implementation project(':core')
+
+    implementation 'com.github.kirich1409:viewbindingpropertydelegate:1.5.0-beta01'
 
     api deps.hilt.hilt
 
