@@ -54,7 +54,6 @@ class MainActivity :
                 R.id.navigation_search -> {
                     fragment = SearchFragment()
                 }
-                else -> true
             }
 
             fragment?.let {
