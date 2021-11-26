@@ -1,7 +1,15 @@
 package com.uygemre.androidbase.ui.pages.home.viewmodel
 
 import android.widget.TextView
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.Transformations
+import com.uygemre.androidbase.ui.pages.home.repository.HomeRepository
+import com.uygemre.component.news.NewsDTO
 import com.uygemre.core.base.BaseViewModel
+import com.uygemre.core.extension.toLiveData
+import com.uygemre.core.networking.DataFetchResult
+import com.uygemre.core.recyclerview.DisplayItem
+import com.uygemre.data.response.NewsResponseModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.rxkotlin.addTo
 import io.reactivex.subjects.PublishSubject
@@ -12,10 +20,11 @@ import javax.inject.Inject
 
 @HiltViewModel
 class HomeFragmentViewModel @Inject constructor(
-
+    var repository: HomeRepository
 ) : BaseViewModel() {
 
     val ps: PublishSubject<Int> = PublishSubject.create()
+    val capsulesPublishSubject = PublishSubject.create<MutableList<DisplayItem>>()
 
     fun printEmre(textView: TextView) {
         textView.text = "Home"
@@ -24,8 +33,23 @@ class HomeFragmentViewModel @Inject constructor(
         }.addTo(disposables)
     }
 
-    override fun onCleared() {
-        disposables.clear()
-        super.onCleared()
+    val capsulesLiveData: LiveData<DataFetchResult<List<NewsResponseModel>>> =
+        Transformations.map(repository.capsulesPublishSubject.toLiveData(disposables)) {
+            when (it) {
+                is DataFetchResult.Progress -> {
+                }
+                is DataFetchResult.Failure -> {
+                }
+                is DataFetchResult.Success -> {
+                    val list = mutableListOf<DisplayItem>()
+                    list.add(NewsDTO())
+                    capsulesPublishSubject.onNext(list)
+                }
+            }
+            it
+        }
+
+    fun getCapsules() {
+        repository.getCapsules()
     }
 }

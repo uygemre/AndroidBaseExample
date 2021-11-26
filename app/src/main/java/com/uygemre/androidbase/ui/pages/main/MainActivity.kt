@@ -17,8 +17,8 @@ import dagger.hilt.android.AndroidEntryPoint
 class MainActivity :
     BaseActivity<ActivityMainBinding, MainActivityViewModel>(R.layout.activity_main) {
 
-    override val viewModel: MainActivityViewModel by viewModels()
     override val viewBinding: ActivityMainBinding by viewBinding()
+    override val viewModel: MainActivityViewModel by viewModels()
 
     var fragment: Fragment? = null
 

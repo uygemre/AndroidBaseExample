@@ -1,4 +1,4 @@
-package com.uygemre.androidbase.ui.application
+package com.uygemre.androidbase.application
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp
@@ -7,5 +7,4 @@ import dagger.hilt.android.HiltAndroidApp
 // Copyriht © Demiroren Teknoloji. All rights reserved.
 
 @HiltAndroidApp
-open class Application : Application() {
-}
+class Application : Application()

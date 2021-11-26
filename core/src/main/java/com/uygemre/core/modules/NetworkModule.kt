@@ -3,15 +3,16 @@ package com.uygemre.core.modules
 import android.content.Context
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
-import com.uygemre.core.BuildConfig
 import com.uygemre.core.constants.AppConstants
+import com.uygemre.core.networking.AppScheduler
+import com.uygemre.core.networking.Scheduler
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
+import io.reactivex.disposables.CompositeDisposable
 import okhttp3.*
-import okhttp3.HttpUrl.Companion.toHttpUrlOrNull
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
@@ -82,4 +83,42 @@ object NetworkModule {
     fun providesRxJavaCallAdapterFactory(): RxJava2CallAdapterFactory {
         return RxJava2CallAdapterFactory.create()
     }
+
+    @Provides
+    @Singleton
+    fun scheduler(): Scheduler {
+        return AppScheduler()
+    }
+
+    @Provides
+    @Singleton
+    fun providesInterceptor(): Interceptor {
+        return Interceptor { chain ->
+            val request = chain.request().newBuilder()
+
+            if (chain.request().url.toUri().toString().contains("api/Soccer/GetMatchDetail")) {
+                val credentials = Credentials.basic("admin!", "password!admin")
+                request.addHeader("Authorization", credentials)
+            }
+            if (chain.request().url.host.contains("delivery.duhnet.tv")) {
+                request.addHeader("", "")
+            }
+
+            if (chain.request().url.toString().contains("datasources/authors/")) {
+                var response = chain.proceed(request.build())
+                var rawJson = response.body?.string()
+                rawJson = rawJson?.replace("\"author_articles\": {}", "\"author_articles\": []")
+                response.newBuilder()
+                    .body(rawJson?.let { ResponseBody.create(response.body?.contentType(), it) })
+                    .build()
+            } else {
+                chain.proceed(request.build())
+            }
+        }
+    }
+
+    @Provides
+    @Singleton
+    @JvmStatic
+    fun compositeDisposable(): CompositeDisposable = CompositeDisposable()
 }

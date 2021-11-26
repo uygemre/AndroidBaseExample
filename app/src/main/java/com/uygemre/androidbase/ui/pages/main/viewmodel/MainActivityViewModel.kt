@@ -1,8 +1,8 @@
 package com.uygemre.androidbase.ui.pages.main.viewmodel
 
-import android.widget.TextView
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.uygemre.androidbase.ui.pages.main.repository.MainActivityRepository
 import com.uygemre.core.base.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
@@ -12,7 +12,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class MainActivityViewModel @Inject constructor(
-
+    var repository: MainActivityRepository
 ) : BaseViewModel() {
 
     private val mutableSelectedItem = MutableLiveData<Int>()
@@ -20,9 +20,5 @@ class MainActivityViewModel @Inject constructor(
 
     fun selectItem(fragment: Int) {
         mutableSelectedItem.value = fragment
-    }
-
-    fun printEmre(textView: TextView) {
-        textView.text = "Emre"
     }
 }
