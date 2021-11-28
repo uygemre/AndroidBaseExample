@@ -13,9 +13,11 @@ import com.uygemre.androidbase.ui.pages.search.SearchFragment
 import com.uygemre.core.extension.replaceFragment
 import dagger.hilt.android.AndroidEntryPoint
 
+// Created by Emre UYGUN on 4.11.2021
+// Copyriht © Demiroren Teknoloji. All rights reserved.
+
 @AndroidEntryPoint
-class MainActivity :
-    BaseActivity<ActivityMainBinding, MainActivityViewModel>(R.layout.activity_main) {
+class MainActivity : BaseActivity<ActivityMainBinding, MainActivityViewModel>(R.layout.activity_main) {
 
     override val viewBinding: ActivityMainBinding by viewBinding()
     override val viewModel: MainActivityViewModel by viewModels()

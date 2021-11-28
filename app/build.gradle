@@ -50,8 +50,8 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_11
-        targetCompatibility JavaVersion.VERSION_11
+        sourceCompatibility versions.sourceCompat
+        targetCompatibility versions.targetCompat
     }
     kotlinOptions {
         jvmTarget = '11'
@@ -64,6 +64,8 @@ dependencies {
     api project(':data')
 
     api deps.hilt.hilt
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.3.5'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.3.5'
 
     kapt deps.dagger.daggerProcessor
     kapt deps.dagger.daggerAndroidProcessor

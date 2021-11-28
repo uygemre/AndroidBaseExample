@@ -13,7 +13,7 @@ import javax.inject.Inject
 class NewsViewHolder(val viewBinding: NewsBinding) : ViewHolder<NewsDTO>(viewBinding) {
 
     override fun bind(item: NewsDTO) {
-        viewBinding.tvTitle.text = item.id.toString()
+        viewBinding.tvTitle.text = "Emre"
     }
 
     class HolderFactory @Inject constructor() : ViewHolderFactory {

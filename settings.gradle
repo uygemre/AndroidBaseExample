@@ -7,7 +7,7 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "AndroidBase"
-include ':application'
+include ':app'
 include ':core'
 include ':component'
 include ':data'
