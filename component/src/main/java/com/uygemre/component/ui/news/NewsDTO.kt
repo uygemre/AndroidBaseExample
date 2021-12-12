@@ -1,4 +1,4 @@
-package com.uygemre.component.news
+package com.uygemre.component.ui.news
 
 import android.os.Parcelable
 import com.uygemre.component.constants.RecyclerViewAdapterConstants.TYPES.TYPE_NEWS

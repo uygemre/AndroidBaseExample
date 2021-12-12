@@ -67,6 +67,9 @@ dependencies {
     api deps.androidx.constraintlayout
     api deps.androidx.fragment
     api deps.androidx.stdlib
+    api deps.androidx.navGraphFragment
+    api deps.androidx.navGraphUi
+    api deps.androidx.navDynamic
 
     api deps.google.material
     api deps.google.gson
@@ -81,6 +84,14 @@ dependencies {
     api deps.square.urlconnection
     api deps.square.timber
 
+    api deps.datastore.datastore
+    api deps.datastore.rxJava2
+    api deps.datastore.rxJava3
+    api deps.datastore.preferences
+    api deps.datastore.preferencesRxJava2
+    api deps.datastore.preferencesRxJava3
+    api deps.datastore.preferencesCore
+
     api deps.viewBinding
     api deps.kProgress
 
@@ -91,4 +102,5 @@ dependencies {
     testApi deps.test.junit
     testApi deps.test.extJunit
     testApi deps.test.espressoCore
+    testApi deps.test.navTesting
 }

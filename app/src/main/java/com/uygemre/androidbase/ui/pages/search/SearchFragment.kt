@@ -14,16 +14,16 @@ import dagger.hilt.android.AndroidEntryPoint
 // Copyriht © Demiroren Teknoloji. All rights reserved.
 
 @AndroidEntryPoint
-class SearchFragment : BaseFragment<FragmentSearchBinding, SearchFragmentViewModel>(R.layout.fragment_search) {
+class SearchFragment : BaseFragment<SearchFragmentViewModel, FragmentSearchBinding>(FragmentSearchBinding::inflate) {
 
-    override val viewBinding: FragmentSearchBinding by viewBinding()
     override val viewModel: SearchFragmentViewModel by viewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewBinding.tvSearch.let {
-            viewModel.printEmre(it)
-        }
+//        kProgress?.show()
+//        binding?.tvSearch?.let {
+//            viewModel.printEmre(it)
+//        }
     }
 }

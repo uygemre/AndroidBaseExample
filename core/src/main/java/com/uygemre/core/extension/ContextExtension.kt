@@ -4,6 +4,10 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.datastore.core.DataStore
+import androidx.datastore.preferences.core.Preferences
+import androidx.datastore.preferences.core.edit
+import androidx.datastore.preferences.preferencesDataStore
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.commit
@@ -42,3 +46,5 @@ fun AppCompatActivity.replaceFragment(
         replace(containerId, fragment)
     }
 }
+
+//val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "baseDataStore")

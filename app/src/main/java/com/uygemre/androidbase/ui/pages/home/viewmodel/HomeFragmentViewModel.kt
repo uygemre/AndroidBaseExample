@@ -4,7 +4,7 @@ import android.widget.TextView
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Transformations
 import com.uygemre.androidbase.ui.pages.home.repository.HomeRepository
-import com.uygemre.component.news.NewsDTO
+import com.uygemre.component.ui.news.NewsDTO
 import com.uygemre.core.base.BaseViewModel
 import com.uygemre.core.extension.toLiveData
 import com.uygemre.core.networking.DataFetchResult

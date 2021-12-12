@@ -4,8 +4,8 @@ buildscript {
     }
 
     ext.versions = [
-            'sourceCompat'          : JavaVersion.VERSION_11,
-            'targetCompat'          : JavaVersion.VERSION_11,
+            sourceCompat            : JavaVersion.VERSION_11,
+            targetCompat            : JavaVersion.VERSION_11,
             'kotlin'                : '1.5.31',
             'kotlinGradlePlugin'    : '1.5.31',
             'androidBuildGradle'    : '7.0.3',
@@ -39,6 +39,7 @@ buildscript {
             'constraintlayout'      : '2.1.1',
             'fragment'              : '1.3.6',
             'parcelize'             : '1.4.20',
+            'navGraph'              : '2.3.5',
 
             // google
             'material'              : '1.4.0',
@@ -62,7 +63,10 @@ buildscript {
             'lifecycle'             : '2.0.0',
 
             // tools
-            kProgress               : '1.2.0'
+            kProgress               : '1.2.0',
+
+            // datastore
+            datastore               : '1.0.0'
     ]
 
     ext.deps = [
@@ -97,7 +101,10 @@ buildscript {
                     fragment          : "androidx.fragment:fragment-ktx:${versions.fragment}",
                     androidBuildGradle: "com.android.tools.build:gradle:${versions.androidBuildGradle}",
                     kotlinGradlePlugin: "org.jetbrains.kotlin:kotlin-gradle-plugin:${versions.kotlinGradlePlugin}",
-                    stdlib            : "org.jetbrains.kotlin:kotlin-stdlib:${versions.kotlin}"
+                    stdlib            : "org.jetbrains.kotlin:kotlin-stdlib:${versions.kotlin}",
+                    'navGraphFragment': "androidx.navigation:navigation-fragment-ktx:${versions.navGraph}",
+                    'navGraphUi'      : "androidx.navigation:navigation-ui-ktx:${versions.navGraph}",
+                    'navDynamic'      : "androidx.navigation:navigation-dynamic-features-fragment:${versions.navGraph}"
             ],
             google     : [
                     material: "com.google.android.material:material:${versions.material}",
@@ -117,10 +124,20 @@ buildscript {
             test       : [
                     junit       : "junit:junit:${versions.junit}",
                     extJunit    : "androidx.test.ext:junit:${versions.extJunit}",
-                    espressoCore: "androidx.test.espresso:espresso-core:${versions.espressoCore}"
+                    espressoCore: "androidx.test.espresso:espresso-core:${versions.espressoCore}",
+                    'navTesting': "androidx.navigation:navigation-testing:${versions.navGraph}"
             ],
             viewBinding: "com.github.kirich1409:viewbindingpropertydelegate:${versions.viewBinding}",
-            kProgress  : "com.kaopiz:kprogresshud:${versions.kProgress}"
+            kProgress  : "com.kaopiz:kprogresshud:${versions.kProgress}",
+            datastore  : [
+                    datastore         : "androidx.datastore:datastore:${versions.datastore}",
+                    rxJava2           : "androidx.datastore:datastore-rxjava2:${versions.datastore}",
+                    rxJava3           : "androidx.datastore:datastore-rxjava3:${versions.datastore}",
+                    preferences       : "androidx.datastore:datastore-preferences:${versions.datastore}",
+                    preferencesRxJava2: "androidx.datastore:datastore-preferences-rxjava2:${versions.datastore}",
+                    preferencesRxJava3: "androidx.datastore:datastore-preferences-rxjava3:${versions.datastore}",
+                    preferencesCore   : "androidx.datastore:datastore-preferences-core:${versions.datastore}"
+            ]
     ]
 
     repositories {

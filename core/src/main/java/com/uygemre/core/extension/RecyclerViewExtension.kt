@@ -7,7 +7,6 @@ import com.uygemre.core.recyclerview.RecyclerViewAdapter
 // Created by Emre UYGUN on 19.11.2021
 // Copyriht © Demiroren Teknoloji. All rights reserved.
 
-//@SuppressLint("WrongConstant")
 fun RecyclerView.setup(
     adapter: RecyclerViewAdapter,
     layoutManager: LinearLayoutManager = LinearLayoutManager(this.context),

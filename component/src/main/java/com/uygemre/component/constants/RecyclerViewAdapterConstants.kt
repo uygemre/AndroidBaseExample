@@ -1,6 +1,6 @@
 package com.uygemre.component.constants
 
-import com.uygemre.component.news.NewsViewHolder
+import com.uygemre.component.ui.news.NewsViewHolder
 
 // Created by Emre UYGUN on 19.11.2021
 // Copyriht © Demiroren Teknoloji. All rights reserved.

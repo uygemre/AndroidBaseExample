@@ -2,9 +2,11 @@ package com.uygemre.androidbase.ui.pages.main.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.viewModelScope
 import com.uygemre.androidbase.ui.pages.main.repository.MainActivityRepository
 import com.uygemre.core.base.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 // Created by Emre UYGUN on 3.11.2021
@@ -21,4 +23,5 @@ class MainActivityViewModel @Inject constructor(
     fun selectItem(fragment: Int) {
         mutableSelectedItem.value = fragment
     }
+
 }

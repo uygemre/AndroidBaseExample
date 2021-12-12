@@ -1,4 +1,4 @@
-package com.uygemre.component.news
+package com.uygemre.component.ui.news
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -10,10 +10,13 @@ import javax.inject.Inject
 // Created by Emre UYGUN on 14.11.2021
 // Copyriht © Demiroren Teknoloji. All rights reserved.
 
-class NewsViewHolder(val viewBinding: NewsBinding) : ViewHolder<NewsDTO>(viewBinding) {
+class NewsViewHolder(val binding: NewsBinding) : ViewHolder<NewsDTO>(binding) {
 
     override fun bind(item: NewsDTO) {
-        viewBinding.tvTitle.text = "Emre"
+        binding.tvTitle.text = "Emre"
+        binding.tvTitle.setOnClickListener {
+            itemViewClickListener?.invoke(it, item, bindingAdapterPosition)
+        }
     }
 
     class HolderFactory @Inject constructor() : ViewHolderFactory {
